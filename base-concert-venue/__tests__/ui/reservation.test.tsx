@@ -11,7 +11,9 @@ describe("Reservation Component", () => {
 
   test("Should show the show is sold out when there are no available seats", async () => {
     render(<Reservation showId={1} submitPurchase={jest.fn()} />);
-    const soldOutMessage = await screen.findByText(/Show is sold out!/i);
+    const soldOutMessage = await screen.findByRole("heading", {
+      name: /Show is sold out!/i,
+    });
     expect(soldOutMessage).toBeInTheDocument();
   });
 });
